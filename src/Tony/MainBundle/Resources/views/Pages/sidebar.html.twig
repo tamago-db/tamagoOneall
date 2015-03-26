@@ -1,0 +1,20 @@
+<section class="section">
+    <header>
+        <h3>Latest Comments</h3>
+    </header>
+    {% for comment in latestComments %}
+        <article class="comment">
+            <header>
+                <span class="small"><span class="highlight">{{ comment.user }}</span> commented on
+                    <a href="{{ path('tony_main_company_show', { 'id': comment.company.id }) }}#comment-{{ comment.id }}">
+                        {{ comment.company.name }}
+                    </a>
+                    [<em><time datetime="{{ comment.created|date('c') }}">{{ comment.created|date('Y-m-d h:iA') }}</time></em>]
+                </span>
+            </header>
+            <p>{{ comment.comment }}</p>
+        </article>
+    {% else %}
+        <p>There are no recent comments</p>
+    {% endfor %}
+</section>

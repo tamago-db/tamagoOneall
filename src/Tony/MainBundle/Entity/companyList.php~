@@ -1,0 +1,258 @@
+<?php
+
+
+namespace Tony\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity (repositoryClass="Tony\MainBundle\Entity\Repository\companyListRepository")
+ * @ORM\Table(name="companyinfo")
+ * @ORM\HasLifecycleCallbacks
+ */
+
+class companyList
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(name="company_id",type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $company_id;
+
+    /**
+     * @ORM\Column(name="c_name", type="string")
+     */
+    protected $c_name;
+
+    /**
+     * @ORM\Column(name="c_description", type="text")
+     */
+    protected $c_description;
+
+    /**
+     * @ORM\Column(name="c_image", type="string", length=20)
+     */
+    protected $c_image;
+
+    /**
+     * @ORM\Column(name="c_url", type="string")
+     */
+    protected $c_url;
+
+
+    /**
+     * @ORM\Column(name="created_time", type="datetime")
+     */
+    protected $created_time;
+
+    /**
+     * @ORM\Column(name="updated_time", type="datetime")
+     */
+    protected $updated_time;
+
+    /**
+     * @ORM\Column(name="address_id", type="integer", nullable=true)
+     */
+    protected $address_id;
+
+    protected $comments = array();
+
+    public function addComment(Comment $comment) {
+        $this->comments[] = $comment;
+    }
+
+    public function getComments(){
+        return $this->comments;
+    }
+
+
+    /**
+     * Get company_id
+     *
+     * @return integer 
+     */
+    public function getCompanyId()
+    {
+        return $this->company_id;
+    }
+
+    /**
+     * Set c_name
+     *
+     * @param string $cName
+     * @return companyList
+     */
+    public function setCName($cName)
+    {
+        $this->c_name = $cName;
+
+        return $this;
+    }
+
+    /**
+     * Get c_name
+     *
+     * @return string 
+     */
+    public function getCName()
+    {
+        return $this->c_name;
+    }
+
+    /**
+     * Set c_description
+     *
+     * @param string $cDescription
+     * @return companyList
+     */
+    public function setCDescription($cDescription)
+    {
+        $this->c_description = $cDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get c_description
+     *
+     * @return string 
+     */
+    public function getCDescription($length = null)
+    {
+        if (false ===is_null($length) && $length > 0)
+            return substr ($this ->c_description, 0, $length);
+        else
+
+        return $this->c_description;
+    }
+
+    /**
+     * Set c_image
+     *
+     * @param string $cImage
+     * @return companyList
+     */
+    public function setCImage($cImage)
+    {
+        $this->c_image = $cImage;
+
+        return $this;
+    }
+
+    /**
+     * Get c_image
+     *
+     * @return string 
+     */
+    public function getCImage()
+    {
+        return $this->c_image;
+    }
+
+    /**
+     * Set c_url
+     *
+     * @param string $cUrl
+     * @return companyList
+     */
+    public function setCUrl($cUrl)
+    {
+        $this->c_url = $cUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get c_url
+     *
+     * @return string 
+     */
+    public function getCUrl()
+    {
+        return $this->c_url;
+    }
+
+    /**
+     * Set created_time
+     *
+     * @param \DateTime $createdTime
+     * @return companyList
+     */
+    public function setCreatedTime($createdTime)
+    {
+        $this->created_time = $createdTime;
+
+        return $this;
+    }
+
+    /**
+     * Get created_time
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedTime()
+    {
+        return $this->created_time;
+    }
+
+    /**
+     * Set updated_time
+     *
+     * @param \DateTime $updatedTime
+     * @return companyList
+     */
+    public function setUpdatedTime($updatedTime)
+    {
+        $this->updated_time = $updatedTime;
+
+        return $this;
+    }
+
+    /**
+     * Get updated_time
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedTime()
+    {
+        return $this->updated_time;
+    }
+
+    /**
+     * Set address_id
+     *
+     * @param integer $addressId
+     * @return companyList
+     */
+    public function setAddressId($addressId)
+    {
+        $this->address_id = $addressId;
+
+        return $this;
+    }
+
+    /**
+     * Get address_id
+     *
+     * @return integer 
+     */
+    public function getAddressId()
+    {
+        return $this->address_id;
+    }
+
+    public function __construct()
+    {
+        $this->setCreatedTime(new \DateTime());
+        $this->setUpdatedTime(new \DateTime());
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedValue()
+    {
+        $this->setUpdatedTime(new \DateTime());
+    }
+}

@@ -1,0 +1,18 @@
+tony_user:
+    resource: "@TonyUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+tony_main:
+    resource: "@TonyMainBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+liip_oneall_check:
+    path:     /login_check
+    defaults: { _controller: TonyMainBundle:Page:account }
+
+liip_oneall_logout:
+    path:     /logout
+    defaults: { _controller: TonyMainBundle:Page:account }

@@ -1,0 +1,39 @@
+{% extends 'TonyMainBundle::base.html.twig' %}
+
+{% block title %}CO.Grade->Company&Reviews{% endblock %}
+{% block content %}
+
+    <div class="jumbotron"> <img class="pull-right" src="{{ asset('bundles/tonymain/images/JPMorgan.jpg') }}" alt="">
+        <h1>The Best Rated Company</h1>
+        <p> Company with the hightest avage score list here </p>
+    </div>
+
+    <div class="row col-sm-7">
+    {% for listing in listings %}
+        <div>
+            <h2><a href="{{ path('tony_main_company_show', { 'id': listing.getId }) }}">{{ listing.getName }}</a></h2>
+
+            <img class="img-rounded" src="{{ asset(['bundles/tonymain/images/', listing.getImage]|join) }}" />
+            <div class="snippet">
+                <h5>Listed at - {{ listing.getCreated|date('l, F j, Y') }}</h5>
+                <p>{{ listing.getDescription(500) }}</p>
+                <p class="continue"><a href="{{ path('tony_main_company_show', { 'id': listing.getId }) }}">Continue reading...</a></p>
+            </div>
+        </div>
+    {% else %}
+        <p>There are no listing entries!</p>
+    {% endfor %}
+
+    </div>
+   <div class="row col-sm-4 col-sm-offset-1">
+       {{ render (controller('TonyMainBundle:Page:sidebar')) }}
+   </div>
+
+
+
+
+
+
+
+
+{% endblock %}

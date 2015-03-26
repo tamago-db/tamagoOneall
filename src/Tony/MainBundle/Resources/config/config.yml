@@ -1,0 +1,6 @@
+parameters:
+
+    tony.emails.contact_email: runcong@gmail.com
+    latest_comment_limit: 20
+    tamago_feed_render.url: 'http://rss.indeed.com/rss?q=RSS'
+    tamago_feed_render.max_per_page: 10

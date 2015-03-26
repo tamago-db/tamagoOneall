@@ -1,0 +1,24 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+<div class="row col-md-8 col-md-offset-2">
+    <div class="panel panel-info text-center">
+        <div class="panel-heading">
+            <h3 class="panel-title">Account Admin</h3>
+        </div>
+        <div class="panel-body">
+
+
+                <form class="contact" action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+                    {{ form_widget(form) }}
+                    <div>
+                        <input class="btn btn-info" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+                    </div>
+                </form>
+
+        </div>
+    </div>
+</div>
+
+

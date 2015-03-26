@@ -1,0 +1,137 @@
+
+.navbar {
+    padding-left: 80px;
+}
+
+.content {
+    padding: 10px 80px;
+}
+
+.navbar{
+    background-color: #009999 !important;
+}
+
+.navbar .nav > li > a {
+
+    line-height: 50px;
+
+    color: floralwhite;
+}
+
+footer{
+    height: 355px;
+    background-color: #009999 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline-block !important;
+    width: 100%;
+    position: relative !important;
+    margin-top: 40px !important;
+    padding-top: 4em !important;
+    z-index: 9;
+}
+
+footer p{
+    text-align: center;
+    font-size : 13px;
+    color     : floralwhite;
+}
+
+#co_logo {
+    height: 100px;
+    padding-left: 20px;
+}
+
+#co_logo_s {
+    margin-top-top: 100;
+    height: 100px;
+}
+
+table{
+    margin: 0 0 20px 50px;
+    border: 0px;
+}
+
+.notice {
+    text-align: center;
+    padding: 10px;
+    background: #DFF2BF;
+    border: 1px solid;
+    color: #4F8A10;
+    margin-bottom:
+    10px;
+}
+form.contact {
+    font-size:
+    16px;
+}
+
+form.contact div {
+    clear: left; margin-bottom: 10px;
+}
+
+form.contact label {
+    float: left;
+    margin-right: 10px;
+    text-align: right;
+    width: 100px;
+    font-weight: bold;
+    vertical-align: top;
+    padding-top: 10px;
+}
+
+form.contact input[type="text"],
+form.contact input[type="email"] {
+    width: 500px;
+    line-height:
+    26px;
+    font-size:
+    20px; min-height:
+    26px;
+    float: left;
+    margin-left: 10px;
+}
+
+form.contact input[type="password"]{
+    width: 200px;
+    line-height:
+    26px;
+    font-size:
+    20px; min-height:
+    26px;
+    float: left;
+    margin-left: 10px;
+}
+
+form.contact textarea {
+    width: 500px;
+    height: 150px;
+    line-height: 26px;
+    font-size: 20px;
+    float: left;
+    margin-left: 10px;
+}
+
+form.contact input[type="submit"] {
+    align-content: center;
+    width: 100px;
+    line-height: 26px;
+    font-size: 20px;
+    min-height: 26px;
+}
+
+form.contact ul li {
+    color: #ff0000;
+    margin-bottom: 5px;
+}
+
+p.continue { margin-bottom: 0; text-align: right; }
+
+.odd{
+    background-color: #eee;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #e44c1a;
+}

@@ -1,0 +1,42 @@
+tony_main_home:
+    path:     /
+    defaults: { _controller: TonyMainBundle:Page:home }
+
+tony_main_listing:
+    path:     /listing
+    defaults: { _controller: TonyMainBundle:Page:listing }
+
+tony_main_jobs:
+     path:     /jobs/{page}
+     defaults: { _controller: TonyMainBundle:Page:jobs, page:1 }
+     requirements:
+             page: \d+
+
+tony_main_contact:
+     path:     /contact
+     defaults: { _controller: TonyMainBundle:Page:contact }
+     requirements:
+        _method:  GET|POST
+
+tony_main_company_show:
+     path:    /list/{id}
+     defaults:  {_controller: TonyMainBundle:Page:show}
+     requirements:
+             _method:  GET
+             id: \d+
+
+tony_main_comment_create:
+     path:    /comment/{id}
+     defaults:  {_controller: TonyMainBundle:Page:create}
+     requirements:
+             _method:  POST
+             id: \d+
+
+
+tony_main_admin:
+     path:     /admin
+     defaults: { _controller: TonyMainBundle:Page:admin }
+
+tony_main_account:
+     path:     /account
+     defaults: { _controller: TonyMainBundle:Page:account }

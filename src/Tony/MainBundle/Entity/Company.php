@@ -55,11 +55,13 @@ class Company
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="company")
+     * @ORM\Column(name="user_social_link_token", type="string", length=36)
      */
-    protected $comments;
+    protected $userSocialLinkToken;
 
 
+
+ 
 
     /**
      * Get id
@@ -112,12 +114,8 @@ class Company
      *
      * @return string 
      */
-    public function getDescription($length = null)
+    public function getDescription()
     {
-
-        if (false ===is_null($length) && $length > 0)
-            return substr ($this ->description, 0, $length);
-        else
         return $this->description;
     }
 
@@ -213,57 +211,26 @@ class Company
         return $this->updated;
     }
 
-
-    public function __construct()
-    {
-        $this->comments = new ArrayCollection();
-        $this->setCreated(new \DateTime());
-        $this->setUpdated(new \DateTime());
-    }
-
     /**
-     * @ORM\PreUpdate
-     */
-    public function setUpdatedValue()
-    {
-        $this->setUpdated(new \DateTime());
-    }
-
-    /**
-     * Add comments
+     * Set userSocialLinkToken
      *
-     * @param \Tony\MainBundle\Entity\Comment $comments
+     * @param string $userSocialLinkToken
      * @return Company
      */
-    public function addComment($comments)
+    public function setUserSocialLinkToken($userSocialLinkToken)
     {
-        $this->comments[] = $comments;
+        $this->userSocialLinkToken = $userSocialLinkToken;
 
         return $this;
     }
 
     /**
-     * Remove comments
+     * Get userSocialLinkToken
      *
-     * @param \Tony\MainBundle\Entity\Comment $comments
+     * @return string 
      */
-    public function removeComment($comments)
+    public function getUserSocialLinkToken()
     {
-        $this->comments->removeElement($comments);
-    }
-
-    /**
-     * Get comments
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getComments()
-    {
-        return $this->comments;
-    }
-
-    public function __toString()
-    {
-        return $this->getName();
+        return $this->userSocialLinkToken;
     }
 }

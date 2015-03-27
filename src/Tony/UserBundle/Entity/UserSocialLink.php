@@ -26,8 +26,9 @@ class UserSocialLink
      *
      * @ORM\Column(name="user_id", type="integer")
      * @ORM\OneToOne(targetEntity="User", inversedBy="UserSocialLink")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $userId;
+    private $user;
 
     /**
      * @var string
@@ -37,10 +38,11 @@ class UserSocialLink
     private $userToken;
 
 
+
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -48,26 +50,26 @@ class UserSocialLink
     }
 
     /**
-     * Set userId
+     * Set user
      *
-     * @param integer $userId
+     * @param integer $user
      * @return UserSocialLink
      */
-    public function setUserId($userId)
+    public function setUser($user)
     {
-        $this->userId = $userId;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get userId
+     * Get user
      *
-     * @return integer
+     * @return integer 
      */
-    public function getUserId()
+    public function getUser()
     {
-        return $this->userId;
+        return $this->user;
     }
 
     /**
@@ -86,7 +88,7 @@ class UserSocialLink
     /**
      * Get userToken
      *
-     * @return string
+     * @return string 
      */
     public function getUserToken()
     {

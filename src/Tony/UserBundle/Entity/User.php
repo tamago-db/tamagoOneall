@@ -24,7 +24,8 @@ class User extends BaseUser
      * @var integer
      * @ORM\OneToOne(targetEntity="UserSocialLink", mappedBy="User")
      */
-    private $sociallinkId;
+    private $userToken;
+
 
 
 
@@ -39,28 +40,26 @@ class User extends BaseUser
         return $this->id;
     }
 
-
-
     /**
-     * Set sociallinkId
+     * Set userToken
      *
-     * @param \Tony\UserBundle\Entity\UserSocialLink $sociallinkId
+     * @param \Tony\UserBundle\Entity\UserSocialLink $userToken
      * @return User
      */
-    public function setSociallinkId(\Tony\UserBundle\Entity\UserSocialLink $sociallinkId = null)
+    public function setUserToken(\Tony\UserBundle\Entity\UserSocialLink $userToken = null)
     {
-        $this->sociallinkId = $sociallinkId;
+        $this->userToken = $userToken;
 
         return $this;
     }
 
     /**
-     * Get sociallinkId
+     * Get userToken
      *
      * @return \Tony\UserBundle\Entity\UserSocialLink 
      */
-    public function getSociallinkId()
+    public function getUserToken()
     {
-        return $this->sociallinkId;
+        return $this->userToken;
     }
 }

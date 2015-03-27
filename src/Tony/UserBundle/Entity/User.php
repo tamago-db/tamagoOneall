@@ -1,5 +1,5 @@
 <?php
-// src/Acme/UserBundle/Entity/User.php
+
 
 namespace Tony\UserBundle\Entity;
 
@@ -20,6 +20,13 @@ class User extends BaseUser
     protected $id;
 
 
+    /**
+     * @var integer
+     * @ORM\OneToOne(targetEntity="UserSocialLink", mappedBy="User")
+     */
+    private $sociallinkId;
+
+
 
 
     /**
@@ -33,23 +40,27 @@ class User extends BaseUser
     }
 
 
-    /**
-     *
-     * @ORM\Column(type="string")
-     */
-    protected $user_token;
-
-
-
 
     /**
-     * Get user_token
+     * Set sociallinkId
      *
-     * @return string
+     * @param \Tony\UserBundle\Entity\UserSocialLink $sociallinkId
+     * @return User
      */
-    public function getUser_token()
+    public function setSociallinkId(\Tony\UserBundle\Entity\UserSocialLink $sociallinkId = null)
     {
-        return $this->user_token;
+        $this->sociallinkId = $sociallinkId;
+
+        return $this;
     }
 
+    /**
+     * Get sociallinkId
+     *
+     * @return \Tony\UserBundle\Entity\UserSocialLink 
+     */
+    public function getSociallinkId()
+    {
+        return $this->sociallinkId;
+    }
 }

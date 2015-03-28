@@ -9,6 +9,7 @@
 namespace Tony\UserBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Validator\Constraints\Null;
 
 class UserRepository extends EntityRepository
 {
@@ -17,9 +18,8 @@ class UserRepository extends EntityRepository
     public function GetUserIdForUserToken($user_token){
 
         $query = $this->createQueryBuilder('u')
-                //->leftJoin('u.userToken', 't')
             ->select('u.id')
-            ->where('u.userToken = :user_token')
+            ->where('u.userSocialLinkToken = :user_token')
             ->setParameter('user_token', $user_token)
             ->getQuery();
 
@@ -31,7 +31,7 @@ class UserRepository extends EntityRepository
     public function GetUserTokenForUserId($user_id){
 
         $qu = $this->createQueryBuilder('u')
-            ->select('u.userToken')
+            ->select('u.userSocialLinkToken')
             ->where('u.id = :user_id')
             ->setParameter('user_id', $user_id);
 
@@ -45,8 +45,9 @@ class UserRepository extends EntityRepository
     public function UnlinkUserTokenFromUserId($user_token, $user_id){
 
         $this->createQueryBuilder('u')
-            ->delete('TonyUserBundle:UserSocialLink','u')
-            ->where('u.userToken = :user_token ')
+            ->update('TonyUserBundle:User','u')
+            ->set('u.userSocialLinkToken', Null)
+            ->where('u.userSocialLinkToken = :user_token ')
             ->andWhere ('u.id = :user_id')
             ->setParameter('user_token', $user_token)
             ->setParameter('user_id', $user_id);
@@ -55,5 +56,16 @@ class UserRepository extends EntityRepository
         // Nothing has to be returned
     }
 
+    public function LinkUserTokenToUserId($user_token, $user_id){
 
+        $this->createQueryBuilder('u')
+            ->update('TonyUserBundle:User','u')
+            ->set('u.userSocialLinkToken', $user_token)
+            ->Where ('u.id = :user_id')
+            ->setParameter('user_id', $user_id);
+
+        // Execute the query: INSERT INTO user_social_link SET user_token = <user_token>, user_id = <user_id>
+        // Nothing has to be returned
+
+    }
 }

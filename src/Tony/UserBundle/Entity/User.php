@@ -20,15 +20,11 @@ class User extends BaseUser
     protected $id;
 
 
+
     /**
-     * @var integer
-     * @ORM\OneToOne(targetEntity="UserSocialLink", mappedBy="User")
+     * @ORM\Column(name="user_social_link_token", type="string", length=36)
      */
-    private $user;
-
-
-
-
+    protected $userSocialLinkToken;
 
     /**
      * Get id
@@ -41,48 +37,25 @@ class User extends BaseUser
     }
 
     /**
-     * Set userToken
+     * Set userSocialLinkToken
      *
-     * @param \Tony\UserBundle\Entity\UserSocialLink $userToken
+     * @param string $userSocialLinkToken
      * @return User
      */
-    public function setUserToken(\Tony\UserBundle\Entity\UserSocialLink $userToken = null)
+    public function setUserSocialLinkToken($userSocialLinkToken)
     {
-        $this->userToken = $userToken;
+        $this->userSocialLinkToken = $userSocialLinkToken;
 
         return $this;
     }
 
     /**
-     * Get userToken
+     * Get userSocialLinkToken
      *
-     * @return \Tony\UserBundle\Entity\UserSocialLink 
+     * @return string 
      */
-    public function getUserToken()
+    public function getUserSocialLinkToken()
     {
-        return $this->userToken;
-    }
-
-    /**
-     * Set user
-     *
-     * @param \Tony\UserBundle\Entity\UserSocialLink $user
-     * @return User
-     */
-    public function setUser(\Tony\UserBundle\Entity\UserSocialLink $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Tony\UserBundle\Entity\UserSocialLink 
-     */
-    public function getUser()
-    {
-        return $this->user;
+        return $this->userSocialLinkToken;
     }
 }

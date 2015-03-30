@@ -10,6 +10,4 @@ class DefaultController extends Controller
     {
         return $this->render('TonyUserBundle:Default:index.html.twig', array('name' => $name));
     }
-
-
 }

@@ -13,8 +13,6 @@ use Symfony\Component\Validator\Constraints\Null;
 
 class UserRepository extends EntityRepository
 {
-
-
     public function GetUserIdForUserToken($user_token){
 
         $query = $this->createQueryBuilder('u')
@@ -66,6 +64,5 @@ class UserRepository extends EntityRepository
 
         // Execute the query: INSERT INTO user_social_link SET user_token = <user_token>, user_id = <user_id>
         // Nothing has to be returned
-
     }
 }

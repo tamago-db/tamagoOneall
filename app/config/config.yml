@@ -95,4 +95,4 @@ liip_oneall:
     site_private_key: 8b8ee72b-1e04-487c-b89a-ee57ac3932c8
     social_links: [linkedin, facebook, github, twitter]
     default_firewall_name: main
-    callback_path: /foo
+    callback_path: /callback

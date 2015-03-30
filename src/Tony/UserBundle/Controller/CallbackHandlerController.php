@@ -12,8 +12,8 @@ class CallbackHandlerController extends Controller
 
         $request = Request::createFromGlobals();
 
-        $em = $request->server->get('connection_token');
-
+//        $em = $request->server->get('connection_token');
+        $em = $request->request->get('connection_token');
         if ( ! empty ($em))
         {
 

@@ -44,9 +44,15 @@
                 <div class="form-group">
                 <a href="{{ path('fos_user_resetting_request') }}">Forgot password ?</a>
                 </div>
+
+                <h3>Sign in with a social network</h3>
+                {{ oneall_login_button({'login_container_id': 'some_tag_id'}) }}
 </form>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock fos_user_content %}
+
+

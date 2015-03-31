@@ -11,8 +11,12 @@ fos_user:
 
 liip_oneall_check:
     path:     /login_check
-    defaults: { _controller: TonyMainBundle:Page:account }
+#    defaults: { _controller: TonyMainBundle:Page:account }
 
 liip_oneall_logout:
     path:     /logout
-    defaults: { _controller: TonyMainBundle:Page:account }
+#    defaults: { _controller: TonyMainBundle:Page:account }
+
+tony_user_callback:
+    path:     /callback
+    defaults: { _controller: TonyUserBundle:CallbackHandler:index }

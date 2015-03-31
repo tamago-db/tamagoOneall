@@ -13,13 +13,9 @@ class CallbackHandlerController extends Controller
 
         $request = Request::createFromGlobals();
 
-        $em = $request->request->get('connection_token');
-        if ( ! empty ($em))
+        $conn_token = $request->request->get('connection_token');
+        if ( ! empty ($conn_token))
         {
-
-
-            //Get connection_token
-            $token = $em;
 
             //Your Site Settings
             $site_subdomain = $this->container->getParameter('site_subdomain');
@@ -30,7 +26,7 @@ class CallbackHandlerController extends Controller
             $site_domain = $site_subdomain.'.api.oneall.com';
 
             //Connection Resource
-            $resource_uri = 'https://'.$site_domain.'/connections/'.$token .'.json';
+            $resource_uri = 'https://'.$site_domain.'/connections/'.$conn_token_token .'.json';
 
             //Setup connection
             $curl = curl_init();
@@ -49,10 +45,6 @@ class CallbackHandlerController extends Controller
             //Error
             if ($result_json === false)
             {
-                //Implement your custom error handling here
-//                echo 'Curl error: ' . curl_error($curl). '<br />';
-//                echo 'Curl info: ' . curl_getinfo($curl). '<br />';
-
 
                 curl_close($curl);
 
@@ -64,10 +56,8 @@ class CallbackHandlerController extends Controller
             //Success
             else
             {
-                //Close connection
                 curl_close($curl);
 
-                //Decode
                 $json = json_decode ($result_json);
 
                 //Extract data
@@ -76,9 +66,11 @@ class CallbackHandlerController extends Controller
                 //Check for plugin
                 if ($data->plugin->key == 'social_login')
                 {
-                    //http://docs.oneall.com/plugins/guide/social-login/
-                    return $this->render('TonyUserBundle:Default:callback.html.twig', array(
-                            'callback_handler' => "login successfully"));
+
+
+                    return $this->redirect($this->generateUrl('tony_main_account'));
+//                    return $this->render('TonyUserBundle:Default:callback.html.twig', array(
+//                            'callback_handler' => "login successfully"));
                 }
                 elseif ($data->plugin->key == 'social_link')
                 {
@@ -87,7 +79,6 @@ class CallbackHandlerController extends Controller
                     {
                         //Identity linked
 
-
                         $session = new Session();
                         $session->start();
                         $user_id=$session->get('userid');
@@ -95,6 +86,7 @@ class CallbackHandlerController extends Controller
                         if ($data->plugin->data->action == 'link_identity')
                         {
                             //The identity <identity_token> has been linked to the user <user_token>
+
                             $user_token = $data->user->user_token;
                             $identity_token = $data->user->identity->identity_token;
 

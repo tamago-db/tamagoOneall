@@ -9,7 +9,8 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/d-skora/LiipOneallBundle"
+            "url": "https://github.com/d-skora/LiipOneallBundle",
+            "url": "https://github.com/runcong/php-sdk"
         }
     ],
     "require": {
@@ -30,7 +31,8 @@
         "doctrine/migrations": "dev-master",
         "white-october/pagerfanta-bundle": "~1.0.2",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "liip/oneall-bundle": "~1.0"
+        "liip/oneall-bundle": "~1.0",
+        "oneall/php-sdk": "master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

@@ -13,8 +13,8 @@ class CallbackHandlerController extends Controller
 
         $request = Request::createFromGlobals();
 
-        $conn_token = $request->request->get('connection_token');
-        if ( ! empty ($conn_token))
+        $user_token = $request->request->get('connection_token');
+        if ( ! empty ($user_token))
         {
 
             //Your Site Settings
@@ -26,7 +26,7 @@ class CallbackHandlerController extends Controller
             $site_domain = $site_subdomain.'.api.oneall.com';
 
             //Connection Resource
-            $resource_uri = 'https://'.$site_domain.'/connections/'.$conn_token_token .'.json';
+            $resource_uri = 'https://'.$site_domain.'/connections/'.$$user_token .'.json';
 
             //Setup connection
             $curl = curl_init();
@@ -100,14 +100,12 @@ class CallbackHandlerController extends Controller
                             {
                                 $em->getRepository('TonyUserBundle:User')
                                     ->LinkUserTokenToUserId($user_token, $user_id);
+
+                                return $this->redirect($this->generateUrl('tony_main_account'));
                             }
 
 
-                            //Next Step:
-                            // 1] Get _your_ $userid from _your_ SESSION DATA
-                            // 2] Check if the $userid is linked to this user_token: GetUserIdForUserToken($user_token)
-                            // 2.1] If not linked, tie the <user_token> to this userid : LinkUserTokenToUserId($user_token, $user_id)
-                            // 3] Redirect the user to the account linking page
+                            
                         }
                         //Identity Unlinked
                         elseif ($data->plugin->data->action == 'unlink_identity')

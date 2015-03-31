@@ -105,7 +105,7 @@ class CallbackHandlerController extends Controller
                             }
 
 
-                            
+
                         }
                         //Identity Unlinked
                         elseif ($data->plugin->data->action == 'unlink_identity')

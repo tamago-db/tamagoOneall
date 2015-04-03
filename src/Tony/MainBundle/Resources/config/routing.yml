@@ -40,3 +40,9 @@ tony_main_admin:
 tony_main_account:
      path:     /account
      defaults: { _controller: TonyMainBundle:Page:account }
+
+
+tony_main_publish:
+     path:    /publish
+     defaults:  {_controller: TonyMainBundle:Publish:message}
+     requirements:

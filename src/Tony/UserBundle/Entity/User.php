@@ -22,9 +22,9 @@ class User extends BaseUser
 
 
     /**
-     * @ORM\Column(name="user_social_link_token", type="string", length=36)
+     * @ORM\Column(name="user_social_link_token", type="string", length=36, nullable=true)
      */
-    protected $userSocialLinkToken;
+    protected $userSocialLinkToken = null;
 
     /**
      * Get id

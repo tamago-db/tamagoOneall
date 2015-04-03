@@ -1,0 +1,8 @@
+parameters:
+
+    site_subdomain: tamagodb
+    site_public_key: c226b0ee-d594-4c0c-b70d-c6dfdb595d2b
+    site_private_key: 8b8ee72b-1e04-487c-b89a-ee57ac3932c8
+    social_links: [facebook, google, twitter, linkedin]
+    default_firewall_name: main
+    callback_path: /callback

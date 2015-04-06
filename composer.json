@@ -8,9 +8,20 @@
     },
     "repositories": [
         {
+            "type": "package",
+            "package": {
+                "name": "oneall/php-sdk",
+                "version": "dev-master",
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/oneall/php-sdk",
+                    "reference": "master"
+                }
+            }
+        },
+        {
             "type": "vcs",
-            "url": "https://github.com/d-skora/LiipOneallBundle",
-            "url": "https://github.com/runcong/php-sdk"
+            "url": "https://github.com/d-skora/LiipOneallBundle"
         }
     ],
     "require": {
